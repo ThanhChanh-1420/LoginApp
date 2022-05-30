@@ -1,0 +1,21 @@
+.iconCalendar {
+    margin-top: 0;
+}
+.iconFilter {
+    font-size: 30px;
+}
+.card-body{
+    height: 15rem;
+}
+
+.card{
+    margin-bottom: 1rem;
+}
+
+.text-date{
+    border-radius: 50px;
+}
+
+* a{
+    font-weight: bold;
+}
