@@ -41,13 +41,16 @@ class Login extends Component {
     }).then(response => {
       //console.log(response.data.data.token_type);
       //console.log(response.data.data.token_type + ' ' + response.data.data.access_token);
-      this.setState({ isToken: response.data.data.token_type + ' ' + response.data.data.access_token });
+      this.setState({ isToken: response.data.data.token_type + ' ' + response.data.data.access_token }, () => { localStorage.setItem('my-key', this.state.isToken); });
       // Code Test
       //this.props.setToken(response.data.data.token_type + ' ' + response.data.data.access_token);
       // Code Test
       console.log(this.state.isToken);
+
+      //localStorage.setItem('my-key', this.state.isToken);
       //console.log(response.data);
-      this.props.history.push('/Home');
+      window.location.href = '/Home';
+      //this.props.history.push('/Home');
     }).catch(error => {
       console.log(error);
     })
@@ -68,12 +71,12 @@ class Login extends Component {
                 {/* to error: add class "has-danger" */}
                 <div className="form-group">
                   <label htmlFor="exampleInputEmail1">Tên đăng nhập</label>
-                  <input type="text" name="username" className="form-control form-control-sm" id="InputUsername" onChange={(e) => this.handleInput(e)}
+                  <input type="text" name="username" required className="form-control form-control-sm" id="InputUsername" onChange={(e) => this.handleInput(e)}
                     value={this.state.username} />
                 </div>
                 <div className="form-group">
                   <label htmlFor="exampleInputPassword1">Mật khẩu</label>
-                  <input type="password" name="password" className="form-control form-control-sm" id="InputPassword" onChange={(e) => this.handleInput(e)}
+                  <input type="password" name="password" required className="form-control form-control-sm" id="InputPassword" onChange={(e) => this.handleInput(e)}
                     value={this.state.password} />
                 </div>
                 <button type="submit" className="btn btn-primary btn-block">Đăng nhập</button>
